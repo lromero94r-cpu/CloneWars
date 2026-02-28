@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Repuestos Ya — Repuestos para Vehículos Livianos, Camiones y Maquinaria en Colombia</title>
+    <meta name="description"
+        content="Repuestos Ya — Cotiza repuestos para tu carro, camión o maquinaria en Colombia con verificación de compatibilidad y seguimiento de pedido. Atención por WhatsApp y llamada desde Bogotá.">
+    <meta property="og:title" content="Repuestos Ya — Verificación de Compatibilidad para tu Vehículo en Colombia">
+    <meta property="og:description"
+        content="Cotiza repuestos verificados para tu carro, camión o maquinaria en Colombia. Asesor técnico por WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f0f0f'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='16' fill='%23ffcc00'%3ERY%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { brand: '#0f0f0f', accent: '#ffcc00', 'accent-dark': '#e6b800', whatsapp: '#25D366', danger: '#ef4444', surface: '#1a1a1a' }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }</script>
+    <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoPartsStore","name":"Repuestos Ya","url":"https://repuestosya.com.co","telephone":"+573023175790","address":{"@type":"PostalAddress","streetAddress":"Cra 15 #93-47, Oficina 302","addressLocality":"Bogotá","addressRegion":"Cundinamarca","postalCode":"110221","addressCountry":"CO"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:30","closes":"17:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"08:00","closes":"13:00"}]}
+</script>
+    <style>
+        html {
+            scroll-behavior: smooth
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s, transform .7s
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease
+        }
+
+        .faq-answer.open {
+            max-height: 600px
+        }
+
+        .faq-icon {
+            transition: transform .3s
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, .7);
+            backdrop-filter: blur(4px);
+            overflow-y: auto;
+            padding: 1rem
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 1rem;
+            max-width: 720px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 2rem;
+            position: relative;
+            animation: modalIn .3s ease
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .brand-scroll {
+            animation: scroll 20s linear infinite
+        }
+
+        .brand-scroll:hover {
+            animation-play-state: paused
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-brand text-white font-sans antialiased">
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand/95 backdrop-blur border-b border-white/10">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+            <a href="#inicio" class="font-black text-lg tracking-tight text-accent">Repuestos Ya</a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+                <a href="#segmento" class="hover:text-white transition">Vehículos</a>
+                <a href="#solucion" class="hover:text-white transition">Cómo funciona</a>
+                <a href="#faq" class="hover:text-white transition">Preguntas</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="tel:+573023175790" onclick="t('click_phone',{location:'header'})"
+                    class="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-white transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                    +57 302 317 5790</a>
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20verificar%20un%20repuesto."
+                    onclick="t('click_whatsapp',{location:'header'})"
+                    class="inline-flex items-center gap-1.5 bg-whatsapp text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-green-600 transition shadow-lg shadow-whatsapp/20">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    </svg>
+                    Cotizar</a>
+            </div>
+        </div>
+    </header>
+    <!-- HERO -->
+    <section id="inicio" class="relative pt-20 pb-16 md:pt-24 md:pb-24 min-h-[90vh] flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand via-surface to-brand z-0"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-8">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></span>
+                <span class="text-accent text-sm font-bold uppercase tracking-widest">Respuesta en 5 min · Horario de
+                    atención</span>
+            </div>
+            <p class="text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-6">Repuestos · Vehículos livianos ·
+                Vehículos pesados · Maquinaria</p>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8">Un repuesto
+                incorrecto no es solo un gasto.<br class="hidden md:block"><span class="text-accent"> Es tiempo perdido
+                    y trabajo repetido.</span></h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">Verifica la
+                compatibilidad exacta con un asesor técnico antes de confirmar tu pedido. Sin adivinanzas. Sin
+                devoluciones. Con seguimiento hasta que llegue.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20verificar%20un%20repuesto."
+                    onclick="t('click_whatsapp',{location:'hero'})"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-black text-lg px-10 py-5 rounded-xl hover:bg-green-600 transition shadow-[0_10px_30px_rgba(37,211,102,0.3)] hover:-translate-y-1 transform">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    </svg>
+                    Verificar mi repuesto por WhatsApp</a>
+                <a href="tel:+573023175790" onclick="t('click_phone',{location:'hero'})"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-10 py-5 rounded-xl hover:bg-white/10 backdrop-blur transition hover:-translate-y-1 transform">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                    Llamar si el vehículo está parado</a>
+            </div>
+            <p class="text-sm text-gray-600">Habla con un asesor, no con un bot.</p>
+        </div>
+    </section>
+    <!-- MARCAS BANNER -->
+    <div class="w-full bg-surface border-y border-white/5 py-6 overflow-hidden">
+        <p class="text-center text-gray-600 text-xs font-bold uppercase tracking-[0.3em] mb-5">Trabajamos con las marcas
+            que mueven Colombia</p>
+        <div class="relative overflow-hidden">
+            <div class="brand-scroll flex gap-12 whitespace-nowrap"><span
+                    class="text-xl font-black text-gray-600">CATERPILLAR</span><span
+                    class="text-xl font-black text-gray-600">KENWORTH</span><span
+                    class="text-xl font-black text-gray-600">KOMATSU</span><span
+                    class="text-xl font-black text-gray-600">CHEVROLET</span><span
+                    class="text-xl font-black text-gray-600">RENAULT</span><span
+                    class="text-xl font-black text-gray-600">KIA</span><span
+                    class="text-xl font-black text-gray-600">HYUNDAI</span><span
+                    class="text-xl font-black text-gray-600">TOYOTA</span><span
+                    class="text-xl font-black text-gray-600">JOHN DEERE</span><span
+                    class="text-xl font-black text-gray-600">FREIGHTLINER</span><span
+                    class="text-xl font-black text-gray-600">HINO</span><span
+                    class="text-xl font-black text-gray-600">NISSAN</span><span
+                    class="text-xl font-black text-gray-600 mr-12">MAZDA</span><span
+                    class="text-xl font-black text-gray-600">CATERPILLAR</span><span
+                    class="text-xl font-black text-gray-600">KENWORTH</span><span
+                    class="text-xl font-black text-gray-600">KOMATSU</span><span
+                    class="text-xl font-black text-gray-600">CHEVROLET</span><span
+                    class="text-xl font-black text-gray-600">RENAULT</span><span
+                    class="text-xl font-black text-gray-600">KIA</span><span
+                    class="text-xl font-black text-gray-600">HYUNDAI</span><span
+                    class="text-xl font-black text-gray-600">TOYOTA</span><span
+                    class="text-xl font-black text-gray-600">JOHN DEERE</span><span
+                    class="text-xl font-black text-gray-600">FREIGHTLINER</span><span
+                    class="text-xl font-black text-gray-600">HINO</span><span
+                    class="text-xl font-black text-gray-600">NISSAN</span><span
+                    class="text-xl font-black text-gray-600">MAZDA</span></div>
+        </div>
+    </div>
+    <!-- SEGMENTACIÓN -->
+    <section id="segmento" class="py-16 md:py-24 px-4 bg-brand">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-2xl md:text-4xl font-black text-center mb-3">¿Qué tipo de vehículo o maquinaria tienes?</h2>
+            <p class="text-gray-500 text-center mb-12 max-w-xl mx-auto">Selecciona tu caso y te conectamos con el asesor
+                indicado. Verificamos compatibilidad desde el primer mensaje.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4" id="segments"></div>
+            <p class="text-center text-sm text-gray-600 mt-8">¿No sabes cuál elegir? <a
+                    href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20ayuda%20para%20identificar%20mi%20repuesto."
+                    onclick="t('click_whatsapp',{location:'segmento'})"
+                    class="text-whatsapp font-bold underline">Escríbenos directamente</a></p>
+        </div>
+    </section>
+    <!-- DOLOR -->
+    <section id="problema" class="py-16 md:py-24 px-4 bg-surface border-y border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">Cada hora de retraso tiene un costo específico.
+            </h2>
+            <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">El problema no es solo pedir el repuesto
+                equivocado. Es todo lo que pasa después.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="painCards"></div>
+            <div class="text-center mt-12">
+                <p class="text-gray-500 mb-4">Por eso verificamos la compatibilidad antes de confirmar.</p>
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20verificar%20un%20repuesto%20antes%20de%20que%20el%20problema%20escale."
+                    onclick="t('click_whatsapp',{location:'problema'})"
+                    class="inline-flex items-center gap-2 text-whatsapp font-bold hover:underline">Habla con un asesor
+                    antes de que el problema escale</a>
+            </div>
+        </div>
+    </section>
+    <!-- SOLUCIÓN -->
+    <section id="solucion" class="py-16 md:py-24 px-4 bg-brand">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">3 compromisos verificables. Sin letra pequeña.
+            </h2>
+            <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">Nuestro proceso tiene 3 puntos de control que
+                evitan los errores más comunes.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="pillars"></div>
+            <div class="text-center mt-12">
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20quiero%20verificar%20la%20compatibilidad%20de%20un%20repuesto."
+                    onclick="t('click_whatsapp',{location:'solucion'})"
+                    class="inline-flex items-center gap-2 bg-whatsapp text-white font-black px-8 py-4 rounded-xl hover:bg-green-600 transition shadow-lg shadow-whatsapp/20">Verificar
+                    mi repuesto ahora — es gratis</a>
+            </div>
+        </div>
+    </section>
+    <!-- ENVIAR FOTO -->
+    <section class="py-16 px-4 bg-surface border-y border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="rounded-2xl bg-brand p-8 md:p-12 relative overflow-hidden border-l-8 border-accent">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                    <div class="max-w-xl">
+                        <span
+                            class="bg-accent text-brand px-3 py-1 text-xs font-black uppercase mb-4 inline-block rounded">Soporte
+                            express</span>
+                        <h3 class="text-white text-2xl md:text-3xl font-black mb-3">¿No encuentras el repuesto exacto?
+                        </h3>
+                        <p class="text-gray-400 text-lg">Envíanos una foto del repuesto o de la pieza dañada por
+                            WhatsApp. Nuestro asesor lo identifica y te cotiza en minutos.</p>
+                    </div>
+                    <div class="flex flex-col gap-4 w-full md:w-auto shrink-0">
+                        <a href="https://wa.me/573023175790?text=Hola%2C%20necesito%20identificar%20un%20repuesto.%20Les%20env%C3%ADo%20foto."
+                            onclick="t('click_whatsapp',{location:'foto'})"
+                            class="whitespace-nowrap bg-whatsapp text-white hover:bg-green-600 px-8 py-5 rounded-xl font-black shadow-xl transition-transform hover:-translate-y-1 transform flex items-center justify-center gap-3 text-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+                                <circle cx="12" cy="13" r="4" />
+                            </svg>
+                            Enviar foto por WhatsApp</a>
+                        <a href="tel:+573023175790" onclick="t('click_phone',{location:'foto'})"
+                            class="text-gray-500 hover:text-white font-bold flex items-center justify-center gap-2 transition">O
+                            llamar ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- OFERTA -->
+    <section id="oferta" class="py-16 md:py-24 px-4 bg-brand">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">Antes de pagar, verifica. Es gratis y tarda
+                minutos.</h2>
+            <div class="bg-surface border-2 border-accent/40 rounded-2xl p-8 md:p-12 mt-10">
+                <p class="font-black text-lg mb-6 text-center text-accent">Obtén gratis:</p>
+                <ul class="space-y-3 mb-8 max-w-md mx-auto">
+                    <li class="flex items-start gap-3"><svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none"
+                            stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7" />
+                        </svg><span>Verificación de compatibilidad con tu modelo exacto</span></li>
+                    <li class="flex items-start gap-3"><svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none"
+                            stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7" />
+                        </svg><span>Cotización con precio, stock y tiempo de entrega real</span></li>
+                    <li class="flex items-start gap-3"><svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none"
+                            stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7" />
+                        </svg><span>Asesor técnico (no bot) que conoce el repuesto</span></li>
+                    <li class="flex items-start gap-3"><svg class="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none"
+                            stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path d="M5 13l4 4L19 7" />
+                        </svg><span>Seguimiento del pedido desde la confirmación</span></li>
+                </ul>
+                <p class="text-sm text-gray-600 text-center mb-6">Sin registro. Sin formularios largos. Sin compromiso.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20quiero%20mi%20verificaci%C3%B3n%20gratuita."
+                        onclick="t('click_whatsapp',{location:'oferta'})"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-black px-8 py-4 rounded-xl hover:bg-green-600 transition">Quiero
+                        mi verificación gratuita</a>
+                    <a href="tel:+573023175790" onclick="t('click_phone',{location:'oferta'})"
+                        class="text-accent font-bold underline">O llamar para cotización inmediata</a>
+                </div>
+                <p class="text-sm text-center text-danger font-bold mt-4">Si tu vehículo está detenido, llámanos ahora.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- CONFIANZA -->
+    <section id="confianza" class="py-16 md:py-24 px-4 bg-surface border-y border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">No somos la opción más barata. Somos la que
+                evita
+                que pagues dos veces.</h2>
+            <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">Los clientes que repiten no lo hacen por
+                precio. Lo
+                hacen porque el repuesto llegó correcto, a tiempo, y con seguimiento.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonials"></div>
+            <div class="text-center mt-10"><a
+                    href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20quiero%20verificar%20un%20repuesto."
+                    onclick="t('click_whatsapp',{location:'confianza'})"
+                    class="text-whatsapp font-bold underline">Verifica
+                    tu repuesto →</a></div>
+        </div>
+    </section>
+    <!-- PROCESO -->
+    <section id="proceso" class="py-16 md:py-24 px-4 bg-brand">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">4 pasos desde tu mensaje hasta la entrega.</h2>
+            <p class="text-gray-500 text-center mb-12">Sin etapas ocultas. Sin sorpresas.</p>
+            <div class="space-y-6" id="steps"></div>
+            <div class="text-center mt-12"><a
+                    href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20quiero%20empezar%20la%20verificaci%C3%B3n%20de%20un%20repuesto."
+                    onclick="t('click_whatsapp',{location:'proceso'})"
+                    class="inline-flex items-center gap-2 bg-whatsapp text-white font-black px-8 py-4 rounded-xl hover:bg-green-600 transition shadow-lg shadow-whatsapp/20">Empezar
+                    ahora — envía tu modelo por WhatsApp</a></div>
+        </div>
+    </section>
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24 px-4 bg-surface border-y border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-black text-center mb-3">12 preguntas que resuelven las dudas reales.
+            </h2>
+            <p class="text-gray-500 text-center mb-12">Todo lo que necesitas saber antes de contactarnos.</p>
+            <div id="faqList" class="space-y-3"></div>
+            <div class="text-center mt-10">
+                <p class="text-gray-500 mb-3">¿Tienes otra pregunta?</p>
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20tengo%20una%20consulta%20sobre%20repuestos."
+                    onclick="t('click_whatsapp',{location:'faq'})" class="text-whatsapp font-bold underline">Consulta
+                    por
+                    WhatsApp →</a>
+            </div>
+        </div>
+    </section>
+    <!-- CTA FINAL -->
+    <section id="contacto" class="py-16 md:py-24 px-4 bg-brand relative overflow-hidden">
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <h2 class="text-2xl md:text-4xl font-black mb-4">El repuesto equivocado ya costó suficiente.<br><span
+                    class="text-accent">El siguiente tiene que ser el correcto.</span></h2>
+            <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto">Habla con un asesor técnico ahora. Verificamos
+                compatibilidad, confirmamos stock y te damos seguimiento real.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20cotizar%20un%20repuesto%20verificado."
+                    onclick="t('click_whatsapp',{location:'contacto'})"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-black text-lg px-10 py-5 rounded-xl hover:bg-green-600 transition shadow-[0_10px_30px_rgba(37,211,102,0.3)]">Cotizar
+                    por WhatsApp</a>
+                <a href="tel:+573023175790" onclick="t('click_phone',{location:'contacto'})"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-bold px-10 py-5 rounded-xl hover:bg-white/10 transition">Llamar
+                    a un asesor</a>
+            </div>
+            <p class="text-sm text-gray-600">Lun a Vie 7:30 a.m. – 5:30 p.m. · Sáb 8:00 a.m. – 1:00 p.m.</p>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="py-10 px-4 bg-black text-gray-500 text-sm border-t border-white/5">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-6">
+            <div>
+                <p class="font-bold text-accent mb-1">Repuestos Ya</p>
+                <p>Cra 15 #93-47, Oficina 302, Bogotá, Colombia</p>
+            </div>
+            <div>
+                <p>Tel: <a href="tel:+573023175790" class="text-white hover:underline">+57 302 317 5790</a></p>
+                <p>WhatsApp: <a href="https://wa.me/573023175790" class="text-whatsapp hover:underline">+57 302 317
+                        5790</a>
+                </p>
+                <p>Lun a Vie 7:30 a.m. – 5:30 p.m. · Sáb 8:00 a.m. – 1:00 p.m.</p>
+            </div>
+            <div><button onclick="openModal('privacidad')" class="hover:text-white block text-left">Política de
+                    privacidad</button><button onclick="openModal('terminos')"
+                    class="hover:text-white block text-left mt-1">Términos y condiciones</button></div>
+        </div>
+        <p class="max-w-5xl mx-auto mt-6 pt-6 border-t border-white/5 text-gray-700">© 2026 Repuestos Ya. Verificación
+            de
+            compatibilidad incluida.</p>
+    </footer>
+    <!-- MODALS -->
+    <div id="modal-privacidad" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button onclick="closeModal('privacidad')"
+                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+                aria-label="Cerrar"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg></button>
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Política de Privacidad</h2>
+            <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+                <p><strong>Responsable:</strong> Repuestos Ya · Bogotá, Colombia · +57 302 317 5790</p>
+                <p>Ley 1581/2012 y Decreto 1377/2013 (SIC). Recopilamos: nombre, teléfono, vehículo/maquinaria,
+                    repuesto,
+                    dirección y facturación. Finalidad: verificar compatibilidad, cotizar, procesar pedidos, seguimiento
+                    y
+                    facturación. Usamos GA4 y Meta Pixel (anónimos). Derechos ARCO: escríbenos al +57 302 317 5790.</p>
+            </div>
+            <div class="mt-6 text-center"><button onclick="closeModal('privacidad')"
+                    class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-terminos" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button onclick="closeModal('terminos')"
+                class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+                aria-label="Cerrar"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                </svg></button>
+            <h2 class="text-2xl font-bold mb-6 text-gray-900">Términos y Condiciones</h2>
+            <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+                <p><strong>Responsable:</strong> Repuestos Ya · Bogotá, Colombia · Feb 2026</p>
+                <p>Sitio informativo, no tienda virtual. Negociación vía asesor. Verificación según datos del cliente.
+                    Cotizaciones válidas según condiciones indicadas. Pedido confirmado al aceptar cotización.
+                    Seguimiento
+                    incluido. Garantía según fabricante. Legislación: Colombia, Bogotá D.C.</p>
+            </div>
+            <div class="mt-6 text-center"><button onclick="closeModal('terminos')"
+                    class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <!-- STICKY MOBILE -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-brand border-t border-white/10 p-2 flex gap-2">
+        <a href="tel:+573023175790" onclick="t('click_phone',{location:'sticky'})"
+            class="flex-1 flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-bold py-3.5 rounded-xl"><svg
+                class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            </svg>Llamar</a>
+        <a href="https://wa.me/573023175790?text=Hola%2C%20soy%20de%20Colombia%20y%20necesito%20verificar%20un%20repuesto."
+            onclick="t('click_whatsapp',{location:'sticky'})"
+            class="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3.5 rounded-xl"><svg
+                class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            </svg>WhatsApp</a>
+    </div>
+    <script>
+        function t(n, p = {}) { if (typeof gtag !== 'undefined') gtag('event', n, p); if (typeof fbq !== 'undefined') fbq('trackCustom', n, p); if (typeof dataLayer !== 'undefined') dataLayer.push({ event: n, ...p }); console.log('Track:', n, p); }
+        const W = '573023175790';
+        const segs = [{ icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-2.8-3.4A2 2 0 0013.6 6H8.4a2 2 0 00-1.6.6L4 10l-2.5 1.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>', title: 'Vehículos livianos', desc: 'Carros, camionetas y SUV.', brands: 'Chevrolet · Renault · Kia · Hyundai · Toyota · Nissan · Mazda', msg: 'Hola, tengo un vehículo liviano y necesito verificar compatibilidad de un repuesto.' }, { icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M1 14l3-8h10l4 8M1 14h16m-16 0v4h2m14-4v4h2m0-4h2v-2a2 2 0 00-2-2h-1M5 18a2 2 0 104 0M15 18a2 2 0 104 0"/></svg>', title: 'Vehículos pesados', desc: 'Camiones, tractomulas y buses.', brands: 'Kenworth · Freightliner · International · Hino · Foton', msg: 'Hola, tengo un vehículo pesado y necesito cotizar repuestos.' }, { icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 20h4l4-8-2-6H4L2 12v8zm0 0h20M14 20l2-4h4l2 4M16 16l-2-6h4"/><circle cx="6" cy="20" r="1.5"/><circle cx="20" cy="20" r="1.5"/></svg>', title: 'Maquinaria construcción', desc: 'Retroexcavadoras, excavadoras, cargadores.', brands: 'Caterpillar · Komatsu · John Deere · Case · Volvo · JCB', msg: 'Hola, necesito repuesto para maquinaria de construcción.' }, { icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 16V4l4 2 4-2 4 2 4-2v12"/><path d="M4 20h16a2 2 0 002-2v-2H2v2a2 2 0 002 2z"/><path d="M12 12v4M8 12v4M16 12v4"/></svg>', title: 'Maquinaria agrícola', desc: 'Tractores, cosechadoras, fumigadoras.', brands: 'John Deere · Kubota · New Holland · Massey Ferguson', msg: 'Hola, necesito repuesto para maquinaria agrícola.' }, { icon: '<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>', title: 'Taller mecánico', desc: 'Compro repuestos para mis clientes.', brands: 'Todas las marcas · Condiciones especiales', msg: 'Hola, soy taller mecánico y necesito verificar un repuesto.' }];
+        document.getElementById('segments').innerHTML = segs.map(s => `<a href="https://wa.me/${W}?text=${encodeURIComponent(s.msg)}" onclick="t('click_segment',{segment:'${s.title}'});t('click_whatsapp',{location:'segmento'})" class="group block bg-surface hover:bg-accent/5 border-2 border-white/5 hover:border-accent rounded-2xl p-6 transition-all text-center"><div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent/20 transition">${s.icon}</div><p class="font-bold mb-2 group-hover:text-accent transition">${s.title}</p><p class="text-sm text-gray-500 mb-3">${s.desc}</p><p class="text-xs text-gray-600">${s.brands}</p></a>`).join('');
+        const pains = [{ t: 'Repuesto incorrecto', d: 'Pagaste por un repuesto que no corresponde. Resultado: devolución, retraso, doble costo.' }, { t: 'Pedido sin seguimiento', d: 'Nadie te dice dónde está. Resultado: incertidumbre y plazos incumplidos.' }, { t: 'Taller inmovilizado', d: 'El técnico espera el repuesto. El cliente espera al técnico. Facturación detenida.' }, { t: 'Flota o maquinaria parada', d: 'Una unidad detenida detiene todo. Resultado: penalidades contractuales.' }];
+        document.getElementById('painCards').innerHTML = pains.map(p => `<div class="bg-brand border border-white/10 rounded-2xl p-6"><p class="font-bold text-danger mb-2">→ ${p.t}</p><p class="text-gray-400 text-sm leading-relaxed">${p.d}</p></div>`).join('');
+        const pills = [{ n: '1', t: 'Verificación técnica antes de confirmar', d: 'Un asesor revisa la compatibilidad antes de que pagues.' }, { n: '2', t: 'Cotización con stock confirmado', d: 'Confirmamos disponibilidad antes de darte precio y tiempo.' }, { n: '3', t: 'Seguimiento activo hasta la entrega', d: 'Sabes el estado de tu pedido en todo momento.' }];
+        document.getElementById('pillars').innerHTML = pills.map(p => `<div class="bg-surface rounded-2xl p-8 border border-white/10"><p class="text-4xl font-black text-accent/30 mb-3">${p.n}</p><p class="font-bold text-lg mb-3">${p.t}</p><p class="text-gray-500 text-sm leading-relaxed">${p.d}</p></div>`).join('');
+        const steps = [{ n: '01', t: 'Nos cuentas qué necesitas', d: 'Marca, modelo, año y repuesto.' }, { n: '02', t: 'Verificamos compatibilidad', d: 'El asesor confirma que corresponde a tu versión.' }, { n: '03', t: 'Te cotizamos con stock real', d: 'Precio, disponibilidad y tiempo confirmados.' }, { n: '04', t: 'Confirmas y hacemos seguimiento', d: 'Te mantenemos informado hasta la entrega.' }];
+        document.getElementById('steps').innerHTML = steps.map(s => `<div class="flex gap-6 items-start bg-surface rounded-2xl p-6 border border-white/10"><span class="text-3xl font-black text-accent/30 shrink-0">${s.n}</span><div><p class="font-bold mb-1">${s.t}</p><p class="text-sm text-gray-500">${s.d}</p></div></div>`).join('');
+        const tsts = [{ name: 'Carlos M., Bogotá', type: 'Particular', text: 'Pedí el mismo repuesto en dos lados. Los dos estaban equivocados. Aquí verificaron el modelo exacto y llegó correcto la primera vez.' }, { name: 'Taller AutoPro, Medellín', type: 'Taller', text: 'Tenía el carro de un cliente esperando. Me confirmaron stock en minutos y el repuesto llegó al día siguiente.' }, { name: 'TransCarga S.A.S., Cali', type: 'Empresa', text: 'Un pedido equivocado nos cuesta caro. Aquí verifican la referencia exacta antes de confirmar.' }];
+        document.getElementById('testimonials').innerHTML = tsts.map(r => `<div class="bg-brand rounded-2xl p-6 border border-white/10"><p class="text-xs font-bold text-accent uppercase tracking-wider mb-3">${r.type}</p><p class="text-sm text-gray-400 italic leading-relaxed mb-4">"${r.text}"</p><p class="text-sm font-bold">${r.name}</p></div>`).join('');
+        const faqs = [['¿Cómo verifican compatibilidad?', 'Te pedimos marca, modelo, año y motor. El asesor confirma antes de cotizar.'], ['¿Qué pasa si llega incorrecto?', 'Verificamos antes. Si hay error nuestro, gestionamos la solución.'], ['¿Cuánto tarda la entrega?', 'Depende del repuesto y ubicación. Tiempo real en la cotización.'], ['¿OEM, genéricos o ambos?', 'Especificamos el origen en la cotización.'], ['¿Descuentos para talleres?', 'Sí. Cuéntanos en el primer mensaje.'], ['¿Facturan para empresa?', 'Sí. Dinos tus necesidades.'], ['¿Hacen seguimiento?', 'Sí, es parte del proceso.'], ['¿Maquinaria importada?', 'Necesitamos marca, modelo y serial.'], ['¿Qué información necesito?', 'Mínimo: marca, modelo, año. Ideal: motor y número de parte.'], ['¿Tienen garantía?', 'Sí. Condiciones en la cotización.'], ['¿Sin compromiso?', 'Sí. Verificación y cotización gratuitas.'], ['¿Urgencia?', 'Llámanos directamente.']];
+        const fE = document.getElementById('faqList');
+        fE.innerHTML = faqs.map((f, i) => `<div class="faq-item border border-white/10 rounded-xl overflow-hidden ${i === 0 ? 'active' : ''}"><button onclick="toggleFaq(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left font-semibold text-sm hover:bg-white/5 transition" aria-expanded="${i === 0 ? 'true' : 'false'}"><span>${f[0]}</span><svg class="faq-icon w-5 h-5 shrink-0 text-gray-600 ${i === 0 ? 'rotate-45' : ''}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer px-5 pb-5 text-sm text-gray-500 leading-relaxed ${i === 0 ? 'open' : ''}">${f[1]}</div></div>`).join('');
+        function toggleFaq(b) { const i = b.parentElement, a = i.querySelector('.faq-answer'), c = i.querySelector('.faq-icon'), o = i.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(e => { e.classList.remove('active'); e.querySelector('.faq-answer').classList.remove('open'); e.querySelector('.faq-icon').classList.remove('rotate-45'); e.querySelector('button').setAttribute('aria-expanded', 'false'); }); if (!o) { i.classList.add('active'); a.classList.add('open'); c.classList.add('rotate-45'); b.setAttribute('aria-expanded', 'true'); t('faq_open', { question: b.querySelector('span').textContent }); } }
+        const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); const id = x.target.id; if (id) t('view_section', { section: id }); } }); }, { threshold: .15 });
+        document.querySelectorAll('section').forEach(s => { s.classList.add('fade-in'); obs.observe(s); });
+        let depths = { 25: false, 50: false, 75: false };
+        window.addEventListener('scroll', () => { const p = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);[25, 50, 75].forEach(d => { if (p >= d && !depths[d]) { depths[d] = true; t('scroll_depth_' + d); } }); }, { passive: true });
+        function openModal(id) { document.getElementById('modal-' + id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById('modal-' + id).classList.remove('active'); document.body.style.overflow = ''; }
+        document.querySelectorAll('.modal-overlay').forEach(m => { m.addEventListener('click', e => { if (e.target === m) closeModal(m.id.replace('modal-', '')); }); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id.replace('modal-', ''))); });
+    </script>
+</body>
+
+</html>
